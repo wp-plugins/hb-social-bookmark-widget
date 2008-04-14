@@ -202,10 +202,10 @@ class hb_social_bookmark {
 	 */
 	function display_footer()
 	{
-		echo 'Social Bookmark Plugin by <a href="http://www.hendrikbahr.de">HendrikBerlin</a>.';
+		echo 'Social Bookmark Plugin by <a href="http://www.hendrikbahr.de/social-bookmark-wordpress-plugin/">HendrikBerlin</a>.';
 	}
 	
 }
 add_action('widgets_init',array('hb_social_bookmark','init'));
-//add_action('wp_footer',array('hb_social_bookmark','display_footer'));
+add_action('wp_footer',array('hb_social_bookmark','display_footer'));
 ?>
