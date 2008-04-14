@@ -4,7 +4,7 @@ Plugin Name: HB Social Bookmarks
 Plugin URI: http://www.hendrikbahr.de/social-bookmark-wordpress-plugin/
 Description: Plugin displays several Social Bookmark Icons in the sidebar as a widget.
 Author: Hendrik Bahr
-Version: 1.0
+Version: 1.0.1
 Author URI: http://www.hendrikbahr.de/
 */
 class hb_social_bookmark {
