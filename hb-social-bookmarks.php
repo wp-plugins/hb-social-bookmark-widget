@@ -75,7 +75,8 @@ class hb_social_bookmark {
 			
 			<li class="widget widget_links">
 				<h2 class="widgettitle">Social Bookmarks</h2>				
-				Bookmarken bei: <span id="bookmark" style="font-weight: bold;"></span>
+				Bookmarken bei:
+				<br /><span id="bookmark" style="font-weight: bold;"></span>
 				<br /><br />
 				
 				<!-- Favoriten -->
