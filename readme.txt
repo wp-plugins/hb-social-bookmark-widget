@@ -3,7 +3,7 @@ Contributors: HendrikBerlin
 Donate link: http://www.hendrikbahr.de
 Tags: widget, plugin, sidebar, social, bookmarks
 Requires at least: 2.3.3
-Tested up to: 2.3.3
+Tested up to: 2.5
 Stable tag: trunk
 
 The module is extending Wordpress with a bunch of the most common social bookmark icons as a sidebar widget.
