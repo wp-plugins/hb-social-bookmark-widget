@@ -49,7 +49,7 @@ This section describes how to install the plugin and get it working:
 
 == Frequently Asked Questions ==
 
-= What if my favorite social bookmark service is not included? =
+= What if my favorite social bookmark service is not yet included? =
 
 Let me know and I will try to add your prefered service to the plugin!
 
