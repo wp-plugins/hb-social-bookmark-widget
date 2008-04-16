@@ -43,7 +43,7 @@ Development has began in February 2008 by Hendrik Bahr, Berlin/ Germany.
 
 This section describes how to install the plugin and get it working:
 
-1. Upload the folder hb-social-bookmarks to the `/wp-content/plugins/` directory
+1. Upload the folder hb-social-bookmark-widget to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress Admin
 3. Place the social bookmark widget on any space in your sidebar through the 'Widgets' menu in WordPress Admin. Use drag and drop. 
 
