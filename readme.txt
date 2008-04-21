@@ -35,6 +35,7 @@ Icons of the following services are included:
  * folkd
  * Blinklist
  * Favoriten.de
+ * Yigg
  
 Development has began in February 2008 by Hendrik Bahr, Berlin/ Germany. 
 
@@ -53,6 +54,10 @@ This section describes how to install the plugin and get it working:
 = What if my favorite social bookmark service is not yet included? =
 
 Let me know and I will try to add your prefered service to the plugin!
+
+= What if I don't see the icons and only see the alt tags? =
+
+Check if your directory name for the plugin matches hb-social-bookmark-widget exactly. In other cases you have to adjust the directory name in the hb-social-bookmarks.php, but then your plugin is not auto update compatible anymore.
 
 == Screenshots ==
 

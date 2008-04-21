@@ -4,16 +4,19 @@ Plugin Name: HB Social Bookmarks
 Plugin URI: http://www.hendrikbahr.de/social-bookmark-wordpress-plugin/
 Description: Plugin displays several social bookmark icons in the sidebar as a widget. After activation place the social bookmark widget on any space in your sidebar through the design -> widgets menu in WordPress admin.
 Author: Hendrik Bahr
-Version: 1.0.3
+Version: 1.1.0
 Author URI: http://www.hendrikbahr.de/
 */
 class hb_social_bookmark {
+	/**
+	 * initializes plugin
+	 */
 	function init(){
 		$widget = new hb_social_bookmark();
     	register_sidebar_widget('HB Social Bookmarks', array($widget,'display'));
 	}
-	/* Function Display
-	 * echos HTML Output for Social bookmark widget
+	/** 
+	 * echos HTML output for social bookmark widget
 	 */
 	function display(){
 		/*Preparing variables */
@@ -193,21 +196,24 @@ class hb_social_bookmark {
 					onmouseover="displayBookmark(\'Favoriten.de\')" onmouseout="displayBookmark(\'\')"
 					onClick="location.href=&quot;http://www.favoriten.de/url-hinzufuegen.html?bm_url=&quot;+encodeURIComponent(location.href)+&quot;&amp;bm_title=&quot;+encodeURIComponent(document.title);return false" 
 					title="Bei Favoriten.de bookmarken" target="_top">
-					<img src="'.$image_path.'/book_favoritende.gif" alt="Favoriten.de" border="0" /></a>
+					<img src="'.$image_path.'/book_favoritende.gif" alt="Favoriten.de" /></a>
+				
+				<!-- Yigg -->
+					<a href="http://yigg.de/neu?exturl='.$url.'&exttitle='.$title.'&extdesc='.$description.'"
+					onmouseover="displayBookmark(\'Yigg\')" onmouseout="displayBookmark(\'\')"
+					title="Bei Yigg bewerten" target="_blank">
+					<img src="'.$image_path.'/book_yigg.png" alt="Yigg" /></a>
 		';
 		
 		/*
-		 * echos plugin credentials - thank you for supporting the author by not removing it, but it's up to you wheather you keep it
+		 * echos plugin credentials - thank you for supporting the author by not removing it, but it's up to you.
 		 */
-		echo '<div>Plugin by <a href="http://www.hendrikbahr.de/social-bookmark-wordpress-plugin/">Hendrik Bahr</a>.</div>';
+		echo '<div>Plugin by <a href="http://www.hendrikbahr.de">Hendrik Bahr</a>.</div>';
 
 		echo '
 			</li>';
 	}
-	
-	
-
-	
 }
+
 add_action('widgets_init',array('hb_social_bookmark','init'));
 ?>
