@@ -4,7 +4,7 @@ Plugin Name: HB Social Bookmarks
 Plugin URI: http://www.hendrikbahr.de/social-bookmark-wordpress-plugin/
 Description: Plugin displays several social bookmark icons in the sidebar as a widget. After activation place the social bookmark widget on any space in your sidebar through the design -> widgets menu in WordPress admin.
 Author: Hendrik Bahr
-Version: 1.1.0
+Version: 1.1.1
 Author URI: http://www.hendrikbahr.de/
 */
 class hb_social_bookmark {
@@ -21,7 +21,7 @@ class hb_social_bookmark {
 	function display(){
 		/*Preparing variables */
 			$image_path			= get_option('siteurl').'/wp-content/plugins/hb-social-bookmark-widget';
-			$url 				= 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+			$url 				= htmlentities('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 		
 		if (is_single() || is_page()) {
 			$description_iso 	= get_the_excerpt();
@@ -47,39 +47,38 @@ class hb_social_bookmark {
 
 		/* printing Output */
 		echo '
-		    <script type="text/javascript">
-			<!--
-				/* Function for Displaying Platform Title */
-				function displayBookmark(text){
-					myDiv = document.getElementById(\'bookmark\');
-					myDiv.innerHTML = text;
-			    	}
-				/* Function for Add to Facebook */
-				function fbs_click() {
-				        u=location.href;
-				        t=document.title;
-				        window.open("http://www.facebook.com/sharer.php?u="+encodeURIComponent(u)+"&t="+encodeURIComponent(t),"sharer","toolbar=0 ,status=0,width=626,height=436");
-				        return false;
-			        }
-			    /* Function for Add to MySpace */
-			    function GetThis(T, C, U, L){
-						var targetUrl = "http://www.myspace.com/Modules/PostTo/Pages/?"+"t="+encodeURIComponent(T)+"&c="+encodeURIComponent(C)+"&u="+encodeURIComponent(U)+"&l="+L;
-						window.open(targetUrl);
-					}
-				/* Function for adding to browser favorites */
-				function AddFavorite(){
-						if(navigator.appName != "Microsoft Internet Explorer"){
-							window.external.addPanel(\''.$title_iso.'\',\''.$url.'\', \'\')
-						} else {
-							window.external.addFavorite(location.href, \''.$title_iso.'\');
-						}							
-					}
-			-->
-			</script>';
-			
-		echo '
 			<li class="widget widget_links">
-				<h2 class="widgettitle">Social Bookmarks</h2>				
+			    <script type="text/javascript">
+				<!--
+					/* Function for Displaying Platform Title */
+					function displayBookmark(text){
+						myDiv = document.getElementById(\'bookmark\');
+						myDiv.innerHTML = text;
+				    	}
+					/* Function for Add to Facebook */
+					function fbs_click() {
+					        u=location.href;
+					        t=document.title;
+					        window.open("http://www.facebook.com/sharer.php?u="+encodeURIComponent(u)+"&t="+encodeURIComponent(t),"sharer","toolbar=0 ,status=0,width=626,height=436");
+					        return false;
+				        }
+				    /* Function for Add to MySpace */
+				    function GetThis(T, C, U, L){
+							var targetUrl = "http://www.myspace.com/Modules/PostTo/Pages/?"+"t="+encodeURIComponent(T)+"&c="+encodeURIComponent(C)+"&u="+encodeURIComponent(U)+"&l="+L;
+							window.open(targetUrl);
+						}
+					/* Function for adding to browser favorites */
+					function AddFavorite(){
+							if(navigator.appName != "Microsoft Internet Explorer"){
+								window.external.addPanel(\''.$title_iso.'\',\''.$url.'\', \'\')
+							} else {
+								window.external.addFavorite(location.href, \''.$title_iso.'\');
+							}							
+						}
+				-->
+				</script>';
+			
+		echo '  <h2 class="widgettitle">Social Bookmarks</h2>				
 				Bookmarken bei:	<span id="bookmark" style="font-weight: bold;"></span>
 				<br /><br />
 				
@@ -90,7 +89,7 @@ class hb_social_bookmark {
 					<img src="'.$image_path.'/book_favorites.png" alt="Browser Favoriten" /></a>
 					
 				<!-- Mister Wong -->
-				<a href="http://www.mister-wong.de/?action=addurl&bm_url='.$url.'&bm_description='.$title.'"
+				<a href="http://www.mister-wong.de/?action=addurl&amp;bm_url='.$url.'&amp;bm_description='.$title.'"
 					onmouseover="displayBookmark(\'Mr. Wong\')" onmouseout="displayBookmark(\'\')"
 					title="Bei Mr. Wong bookmarken" target="_blank"><img
 					src="'.$image_path.'/book_wong_16.gif" alt="Mr. Wong" /></a>
@@ -105,8 +104,8 @@ class hb_social_bookmark {
 				<!-- StumbleUpon -->
 				<a href="http://www.stumbleupon.com/submit?url='.$url.'"
 					onmouseover="displayBookmark(\'StumbleUpon\')" onmouseout="displayBookmark(\'\')" 
-					title="Bei StumbledUpon bookmarken">
-					<img border=0 src="'.$image_path.'/book_su.gif" alt="StumbleUpon">
+					title="StumbledUpon">
+					<img src="'.$image_path.'/book_su.gif" alt="StumbleUpon" />
 					</a>
 					
 				<!-- Technorati -->
@@ -117,32 +116,32 @@ class hb_social_bookmark {
 					alt="technorati" /></a>
 		
 				<!-- Furl -->
-				<a href="http://furl.net/storeIt.jsp?u='.$url.'&t='.$title.'"
+				<a href="http://furl.net/storeIt.jsp?u='.$url.'&amp;t='.$title.'"
 					onmouseover="displayBookmark(\'Furl\')" onmouseout="displayBookmark(\'\')"
 					title="Bei Furl speichern" target="_blank"><img
 					src="'.$image_path.'/book_furl.png" alt="Furl" /></a>
 				
 				<!-- Del.icio.us -->
-				<a href="http://del.icio.us/post?url='.$url.'&title='.$title.'"
+				<a href="http://del.icio.us/post?url='.$url.'&amp;title='.$title.'"
 					onmouseover="displayBookmark(\'Del.icio.us\')" onmouseout="displayBookmark(\'\')"
-					title="Bei del.icio.us bookmarken" target="_blank"><img
+					title="del.icio.us" target="_blank"><img
 					src="'.$image_path.'/book_delicious.png"
 					alt="del.icio.us" /></a>
 				
 				<!-- Yahoo -->
-				<a href="http://myweb2.search.yahoo.com/myresults/bookmarklet?u='.$url.'&t='.$title.'"
+				<a href="http://myweb2.search.yahoo.com/myresults/bookmarklet?u='.$url.'&amp;t='.$title.'"
 					onmouseover="displayBookmark(\'Yahoo\')" onmouseout="displayBookmark(\'\')"
-					title="Zu Mein Yahoo hinzufügen" target="_blank"><img
+					title="My Yahoo" target="_blank"><img
 					src="'.$image_path.'/book_yahoo.png" alt="yahoo" /></a>
 				
 				<!-- Linkarena -->
-				<a href="http://www.linkarena.com/bookmarks/addlink/?url='.$url.'&title='.$title.'"
+				<a href="http://www.linkarena.com/bookmarks/addlink/?url='.$url.'&amp;title='.$title.'"
 					onmouseover="displayBookmark(\'Linkarena\')" onmouseout="displayBookmark(\'\')"
 					title="Bei Linkarena bookmarken" target="_blank"><img
 					src="'.$image_path.'/book_linkarena.png" alt="Linkarena" /></a>
 				
 				<!-- Oneview -->
-				<a href="http://oneview.de/quickadd/neu/addBookmark.jsf?URL='.$url.'&title='.$title.'"
+				<a href="http://oneview.de/quickadd/neu/addBookmark.jsf?URL='.$url.'&amp;title='.$title.'"
 					onmouseover="displayBookmark(\'Oneview\')" onmouseout="displayBookmark(\'\')"
 					title="Bei Oneview bookmarken" target="_blank"><img
 					src="'.$image_path.'/book_oneview.png" alt="Oneview" /></a>
@@ -150,12 +149,12 @@ class hb_social_bookmark {
 				<!-- Webnews -->
 				<a href="http://www.webnews.de"
 					onmouseover="displayBookmark(\'Webnews\')" onmouseout="displayBookmark(\'\')" 
-					onclick="document.location = \'http://www.webnews.de/einstellen?url=\'+encodeURIComponent(document.location)+\'&title=\'+encodeURIComponent(document.title); return false;" 
-					title="Diesen Beitrag bei Webnews verlinken">
+					onclick="document.location = \'http://www.webnews.de/einstellen?url=\'+encodeURIComponent(document.location)+\'&amp;title=\'+encodeURIComponent(document.title); return false;" 
+					title="Webnews">
 					<img src="'.$image_path.'/book_webnews.gif" alt="Webnews" /></a>
 				
 				<!-- Digg -->
-				<a href="http://digg.com/submit?url='.$url.'&title='.$title.'&bodytext='.$description.'&media=news&topic=tech_news"
+				<a href="http://digg.com/submit?url='.$url.'&amp;title='.$title.'&amp;bodytext='.$description.'&amp;media=news&amp;topic=tech_news"
 					onmouseover="displayBookmark(\'Digg\')" onmouseout="displayBookmark(\'\')" 
 					title="Digg it">
 					<img src="'.$image_path.'/book_digg-16x16.png" width="16" height="16" alt="Digg!" />
@@ -164,29 +163,29 @@ class hb_social_bookmark {
 				<!-- Myspace -->
 				<a href="javascript: GetThis(\''.$title_iso.' \', \''.$description_iso.' \', \' '.$url.' \', 5)"
 					onmouseover="displayBookmark(\'MySpace\')" onmouseout="displayBookmark(\'\')" 
-					title="Bei MySpace speichern">
+					title="MySpace">
 					<img src="'.$image_path.'/book_myspace.gif" alt="MySpace" /></a>
 					
 				<!-- Windows live -->
-				<a href="https://favorites.live.com/quickadd.aspx?marklet=1&mkt=de&url='.$url.'&title='.$title.'&top=1"
+				<a href="https://favorites.live.com/quickadd.aspx?marklet=1&amp;mkt=de&amp;url='.$url.'&amp;title='.$title.'&amp;top=1"
 					onmouseover="displayBookmark(\'Windows Live\')" onmouseout="displayBookmark(\'\')"
-					title="Bei Windows live Favorites bookmarken">
+					title="Windows live Favorites">
 					<img src="'.$image_path.'/book_live.png" alt="Windows Live" /></a>
 
 				<!-- Google -->
-				<a href="http://www.google.com/bookmarks/mark?op=add&hl=de&bkmk='.$url.'&title='.$title.'"
+				<a href="http://www.google.com/bookmarks/mark?op=add&amp;hl=de&amp;bkmk='.$url.'&amp;title='.$title.'"
 					onmouseover="displayBookmark(\'Google\')" onmouseout="displayBookmark(\'\')"
-					title="Bei iGoogle speichern" target="_blank"><img
+					title="iGoogle" target="_blank"><img
 					src="'.$image_path.'/book_google.png" alt="google" /></a>
 					
 				<!-- folkd -->
 				<a href="http://www.folkd.com/submit/'.$url.'"
 					onmouseover="displayBookmark(\'folkd\')" onmouseout="displayBookmark(\'\')"
-					title="Bei folkd bookmarken" target="_blank"><img
+					title="folkd" target="_blank"><img
 					src="'.$image_path.'/book_folkd.png" alt="folkd" /></a>
 
 				<!-- Blinklist -->
-				<a href="http://www.blinklist.com/?Action=Blink/addblink.php&Url='.$url.'&Title='.$title.'&Tag=&Description='.$description.'"
+				<a href="http://www.blinklist.com/?Action=Blink/addblink.php&amp;Url='.$url.'&amp;Title='.$title.'&amp;Tag=&amp;Description='.$description.'"
 					onmouseover="displayBookmark(\'Blinklist\')" onmouseout="displayBookmark(\'\')"
 					title="Bei Blinklist bookmarken" target="_blank"><img
 					src="'.$image_path.'/book_blinklist.png" alt="Blinklist" /></a>
@@ -194,14 +193,14 @@ class hb_social_bookmark {
 				<!-- Favoriten.de -->
 					<a href="http://www.favoriten.de/url-hinzufuegen.html" 
 					onmouseover="displayBookmark(\'Favoriten.de\')" onmouseout="displayBookmark(\'\')"
-					onClick="location.href=&quot;http://www.favoriten.de/url-hinzufuegen.html?bm_url=&quot;+encodeURIComponent(location.href)+&quot;&amp;bm_title=&quot;+encodeURIComponent(document.title);return false" 
+					onclick="location.href=&quot;http://www.favoriten.de/url-hinzufuegen.html?bm_url=&quot;+encodeURIComponent(location.href)+&quot;&amp;bm_title=&quot;+encodeURIComponent(document.title);return false" 
 					title="Bei Favoriten.de bookmarken" target="_top">
 					<img src="'.$image_path.'/book_favoritende.gif" alt="Favoriten.de" /></a>
 				
 				<!-- Yigg -->
-					<a href="http://yigg.de/neu?exturl='.$url.'&exttitle='.$title.'&extdesc='.$description.'"
+					<a href="http://yigg.de/neu?exturl='.$url.'&amp;exttitle='.$title.'&amp;extdesc='.$description.'"
 					onmouseover="displayBookmark(\'Yigg\')" onmouseout="displayBookmark(\'\')"
-					title="Bei Yigg bewerten" target="_blank">
+					title="Yigg" target="_blank">
 					<img src="'.$image_path.'/book_yigg.png" alt="Yigg" /></a>
 		';
 		
