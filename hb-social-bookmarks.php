@@ -4,7 +4,7 @@ Plugin Name: HB Social Bookmarks
 Plugin URI: http://www.hendrikbahr.de/social-bookmark-wordpress-plugin/
 Description: Plugin displays several social bookmark icons in the sidebar as a widget. After activation place the social bookmark widget on any space in your sidebar through the design -> widgets menu in WordPress admin.
 Author: Hendrik Bahr
-Version: 1.1.1
+Version: 1.2.0
 Author URI: http://www.hendrikbahr.de/
 */
 class hb_social_bookmark {
@@ -157,7 +157,7 @@ class hb_social_bookmark {
 				<a href="http://digg.com/submit?url='.$url.'&amp;title='.$title.'&amp;bodytext='.$description.'&amp;media=news&amp;topic=tech_news"
 					onmouseover="displayBookmark(\'Digg\')" onmouseout="displayBookmark(\'\')" 
 					title="Digg it">
-					<img src="'.$image_path.'/book_digg-16x16.png" width="16" height="16" alt="Digg!" />
+					<img src="'.$image_path.'/book_digg.png" width="16" height="16" alt="Digg!" />
 					</a>
 					
 				<!-- Myspace -->
@@ -202,6 +202,12 @@ class hb_social_bookmark {
 					onmouseover="displayBookmark(\'Yigg\')" onmouseout="displayBookmark(\'\')"
 					title="Yigg" target="_blank">
 					<img src="'.$image_path.'/book_yigg.png" alt="Yigg" /></a>
+				
+				<!-- Weblinkr -->
+					<a href="http://weblinkr.com" onclick="window.open(\'http://weblinkr.com/add/?popup=1&amp;address=\'+encodeURIComponent(location.href)+\'&amp;title=\'+encodeURIComponent(document.title), \'Weblinkr\',\'width=730, height=500, scrollbars=1, toolbar=0, resizable=1\'); return false;"
+					onmouseover="displayBookmark(\'Weblinkr\')" onmouseout="displayBookmark(\'\')"
+					title="Weblinkr" target="_blank">
+					<img src="'.$image_path.'/book_weblinkr.png" alt="Weblinkr" /></a>
 		';
 		
 		/*

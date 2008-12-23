@@ -3,7 +3,7 @@ Contributors: HendrikBerlin
 Donate link: http://www.hendrikbahr.de
 Tags: widget, plugin, sidebar, social, bookmarks
 Requires at least: 2.3.3
-Tested up to: 2.5
+Tested up to: 2.7
 Stable tag: trunk
 
 The module is extending Wordpress with a bunch of the most common social bookmark icons as a sidebar widget.
@@ -12,7 +12,7 @@ The module is extending Wordpress with a bunch of the most common social bookmar
 
 The Social Bookmark plugin is a "ready to run" addon for the Wordpress blogsoftware. It adds a list of 16x16px icons of the most common social bookmark services to your wordpress blog. 
 It comes as a sidebar widget that can be activated and positioned in the admin's widget configuration interface. The plugin takes care of the correct transfer of bookmarking titles, URLs and descriptions individually generated from your content.
-
+The Plugin is fully XHTML 1.0 Transitional compatible.
 
 Included is a mousover-javascript that shows the platform's name in text above the icons.
 
@@ -36,9 +36,7 @@ Icons of the following services are included:
  * Blinklist
  * Favoriten.de
  * Yigg
- 
-Development has began in February 2008 by Hendrik Bahr, Berlin/ Germany. 
-
+ * Weblinkr
 
 == Installation ==
 
